@@ -1,0 +1,8 @@
+﻿  HelloWorld.cpp
+c:\users\hp\desktop\project1\project1\objmodel.h(11): warning C4305: “初始化”: 从“double”到“float”截断
+c:\users\hp\desktop\project1\project1\helloworld.cpp(24): warning C4838: 从“double”转换到“GLfloat”需要收缩转换
+c:\users\hp\desktop\project1\project1\helloworld.cpp(24): warning C4305: “初始化”: 从“double”到“GLfloat”截断
+c:\users\hp\desktop\project1\project1\helloworld.cpp(25): warning C4838: 从“double”转换到“GLfloat”需要收缩转换
+c:\users\hp\desktop\project1\project1\helloworld.cpp(25): warning C4305: “初始化”: 从“double”到“GLfloat”截断
+c:\users\hp\desktop\project1\project1\helloworld.cpp(316): warning C4018: “<”: 有符号/无符号不匹配
+  Project1.vcxproj -> C:\Users\HP\Desktop\Project1\x64\Debug\Project1.exe

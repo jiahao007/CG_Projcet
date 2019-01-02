@@ -1,2 +1,2 @@
-# CG_Projcet
-This project is aimed at the CG project.
+# CG_Project
+背景搭好了，obj也可以导入，预计周五晚完成轨道绘制，可以先将球在背景中移动调试调试，程序框架为平常实验所用的glut
