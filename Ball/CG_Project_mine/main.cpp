@@ -36,8 +36,8 @@ float G_fAngle_vertical = 0.0f;
 //设定读入的模型以及显示的方式
 bool redraw = true;
 ObjModel *obj1 = new ObjModel();
-Obj *o = new Obj("C:/Users/Zihao Wang/Desktop/CG_Project_mine/obj/cgv5.obj");
-string path = "C:/Users/Zihao Wang/Desktop/CG_Project_mine/obj/rubby.obj";
+Obj *o = new Obj("../obj/cgv5.obj");
+string path = "/obj/rubby.obj";
 //light0参数
 GLfloat Vp0[] = { 0.0,0.0,0.0,1.0 };	 //光源环境光位置
 GLfloat Va0[] = { 0.8,0.8,0.8,1 };       //光源环境光强度数组  
@@ -72,12 +72,12 @@ void texload(int i, const char *filename);
 void myinit(void)
 {
 	glGenTextures(6, texture); // 第一参数是需要生成标示符的个数, 第二参数是返回标示符的数组
-	texload(0, "C:/Users/Zihao Wang/Desktop/CG_Project_mine/Textures/back.bmp");
-	texload(1, "C:/Users/Zihao Wang/Desktop/CG_Project_mine/Textures/front.bmp");
-	texload(2, "C:/Users/Zihao Wang/Desktop/CG_Project_mine/Textures/right.bmp");
-	texload(3, "C:/Users/Zihao Wang/Desktop/CG_Project_mine/Textures/left.bmp");
-	texload(4, "C:/Users/Zihao Wang/Desktop/CG_Project_mine/Textures/top.bmp");
-	texload(5, "C:/Users/Zihao Wang/Desktop/CG_Project_mine/Textures/bottom.bmp");
+	texload(0, "../Textures/back.bmp");
+	texload(1, "../Textures/front.bmp");
+	texload(2, "../Textures/right.bmp");
+	texload(3, "../Textures/left.bmp");
+	texload(4, "../Textures/top.bmp");
+	texload(5, "../Textures/bottom.bmp");
 	//your initialization code
 	glEnable(GL_DEPTH_TEST);
 

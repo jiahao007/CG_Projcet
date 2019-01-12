@@ -376,7 +376,7 @@ void Ball::Roll()
 	if (angle > 360)
 		angle = 0;
 	speed = sqrt(this->forwardSpeed * this->forwardSpeed + this->LeftSpeed * this->LeftSpeed);
-	angle += fabsf(speed) * 30;
+	angle += fabsf(speed) * 90;
 	//glTranslatef(center[0] + fabsf(speed) * forward_Vector[0], center[1] + fabsf(speed) * forward_Vector[1], center[2] + fabsf(speed) * forward_Vector[2]);
 	//glTranslatef(center[0] + speed * forward_Vector[0] , center[1] + speed*forward_Vector[1], center[2] + speed * forward_Vector[2]);
 	

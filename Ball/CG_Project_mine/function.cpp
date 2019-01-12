@@ -56,7 +56,7 @@ void _loadBitmap(string picture, int material)
 void Init()
 {
 	glGenTextures(3, textures);
-	_loadBitmap("C:/Users/Zihao Wang/Desktop/CG_Project_mine/Pictures/0.bmp", textures[0]);//wood
-	_loadBitmap("C:/Users/Zihao Wang/Desktop/CG_Project_mine/Pictures/1.bmp", textures[1]);//paper
-	_loadBitmap("C:/Users/Zihao Wang/Desktop/CG_Project_mine/Pictures/2.bmp", textures[2]);
+	_loadBitmap("../Pictures/0.bmp", textures[0]);//wood
+	_loadBitmap("../Pictures/1.bmp", textures[1]);//paper
+	_loadBitmap("../Pictures/2.bmp", textures[2]);
 }
