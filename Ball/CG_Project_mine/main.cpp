@@ -7,6 +7,7 @@
 #include "function.h"
 #include "objModel.h"
 #include "Obj.h"
+#include"glassRectangle.h"
 // This assignment may cost you some efferts, so I give you some important HINTS, hope that may help you.
 // Enjoy the coding and thinking, do pay more attention to the library functions used in OPENGL, such as how they are used? what are the parameters used? and why?
 
@@ -46,6 +47,13 @@ GLuint texture[6];
 
 
 Ball ball;
+
+bool isbrak = false;
+glassRectangle rec(56.96, -9, -5.6, 3, 0.1, 3, 0, 0);
+GLfloat color[4] = { 0.0,1.0,1.0,0.3 };
+GLfloat time = 0;
+GLfloat breaktime;
+
 
 void myinit(void);
 //void myReshape(GLsizei w, GLsizei h);
@@ -306,6 +314,7 @@ void key(unsigned char key, int x, int y)
 	case ' ':
 		ball.Stop();
 		break;
+
 //----------------------------
 	case 'u':	//"u"
 		G_fDistance -= 2.0f;
@@ -338,86 +347,57 @@ void redraw_fun()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-	//glMatrixMode(GL_MODELVIEW);
-
-	////载入单位化矩阵
-	//glLoadIdentity();
-	//glLightfv(GL_LIGHT0, GL_POSITION, Vp0);		//设置光源的位置
-	//glLightfv(GL_LIGHT0, GL_AMBIENT, Va0);
-	//glLightfv(GL_LIGHT0, GL_DIFFUSE, Vd0);
-	//glLightfv(GL_LIGHT0, GL_SPECULAR, Vs0);
-	//glTranslatef(0.0, 0.0, -G_fDistance);
-
-	//if (redraw) {		//只读一遍 
-
-	//	//obj1->readobj(path);
-	//	redraw = false;
-	//}
-	//glRotatef(G_fAngle_horizon, 0.0f, 1.0f, 0.0f);
-	//glRotatef(G_fAngle_vertical, 1.0f, 0.0f, 0.0f);
-	o->Draw(0.01);
-	//obj1->showobj();
-	//glLoadIdentity();
-
-
-	//交换前后缓冲区
-	//glutSwapBuffers();
-
-	glPushMatrix();
-
-	skybox();
-	glPopMatrix();
-
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();                                    // Reset The Current Modelview Matrix
 
+	glFrustum(-1.0, 1.0, -1.0, 1.0, 2.0, 400);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-
-	//载入单位化矩阵
-	//glLoadIdentity();
-	glLightfv(GL_LIGHT0, GL_POSITION, Vp0);		//设置光源的位置
-	glLightfv(GL_LIGHT0, GL_AMBIENT, Va0);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, Vd0);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, Vs0);
-	//glTranslatef(0.0, 0.0, -G_fDistance);
-
-	if (redraw) {		//只读一遍 
-
-		//obj1->readobj(path);
-		redraw = false;
-	}
-	/*glRotatef(G_fAngle_horizon, 0.0f, 1.0f, 0.0f);
-	glRotatef(G_fAngle_vertical, 1.0f, 0.0f, 0.0f);*/
-	//o->Draw(0.01);
-
-
-
-
-	glFrustum(-1.0, 1.0, -1.0, 1.0, 2.0, 400);
-
-	
 	gluLookAt(ball.Get_Eye(0), ball.Get_Eye(1), ball.Get_Eye(2),
 		ball.Get_Center(0), ball.Get_Center(1), ball.Get_Center(2),
 		0, 0, 1);
 
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_LIGHTING);
-	GLfloat white[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat light_pos[] = { 5,5,5,1 };
 
-	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-	glLightfv(GL_LIGHT0, GL_AMBIENT, white);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_COLOR_MATERIAL);
+
+	glLightfv(GL_LIGHT0, GL_POSITION, Vp0);		//设置光源的位置
+	glLightfv(GL_LIGHT0, GL_AMBIENT, Va0);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, Vd0);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, Vs0);
+
+
+	//glLightModeli(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+
 	glEnable(GL_LIGHT0);
 
-	//glutSolidCube(0.5);
-	ball.Roll();
-	
+	glEnable(GL_LIGHTING);
 
-	if (bAnim) fRotate += 0.5f;
+
+
+	//天空盒
+	//glPushMatrix();
+	skybox();
+	//glPopMatrix();
+
+
+	o->Draw(0.01);
+
+
+	ball.Roll();
+
+	glPushMatrix();
+	if (!isbrak)
+		rec.Draw(color, 200, 200);
+	else {
+		rec.Break(0.1, 0.1, breaktime, time);
+		//time = time + 0.01;
+	}
+	glPopMatrix();
+
+	//getFPS();
 
 	glutSwapBuffers();
 }
