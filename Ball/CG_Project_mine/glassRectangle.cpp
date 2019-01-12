@@ -151,7 +151,7 @@ void glassRectangle::Draw(GLfloat *color, GLfloat boundX, GLfloat boundY){
 }
 
 void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float t){
-	printf("to:%lf,t:%lf\n", t0, t);
+	//printf("to:%lf,t:%lf\n", t0, t);
 	GLfloat lightSpecular[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat lightPosition[] = { 0.5, 0.5, 4.0, 0.0 };
 	float time = t - t0;

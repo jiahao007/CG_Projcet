@@ -49,11 +49,16 @@ GLuint texture[6];
 Ball ball;
 
 bool isbrak = false;
-glassRectangle rec(56.96, -9, -5.6, 3, 0.1, 3, 0, 0);
+glassRectangle glass1(-6.66, -0.02, -5.6, 3, 0.1, 3, 0, 0);
+glassRectangle glass2(-12.66, -0.06, -5.6, 3, 0.1, 3, 0, 0);
+glassRectangle glass3(-25.16, -0.46, -5.6, 3, 0.1, 3, 0, 0);
 GLfloat color[4] = { 0.0,1.0,1.0,0.3 };
 GLfloat time = 0;
 GLfloat breaktime;
 
+int flag1 = 0;
+int flag2 = 0;
+int flag3 = 0;
 
 void myinit(void);
 //void myReshape(GLsizei w, GLsizei h);
@@ -388,11 +393,34 @@ void redraw_fun()
 
 	ball.Roll();
 
+	//glPushMatrix();
+	//if (!(ball.Get_Center(0)>=-6.66&&ball.Get_Center(0)<=-6.64)&&flag1==0)
+	//	glass1.Draw(color, 200, 200);
+	//else {
+	//	printf("%d\n",flag1);
+	//	flag1 = 1;
+	//	glass1.Break(0.1, 0.1, breaktime, time);
+	//	//time = time + 0.01;
+	//}
+	//glPopMatrix();
+
 	glPushMatrix();
-	if (!isbrak)
-		rec.Draw(color, 200, 200);
+	if (!(ball.Get_Center(0) >= -12.66&&ball.Get_Center(0) <= -12.64) && flag2 == 0)
+		glass2.Draw(color, 200, 200);
 	else {
-		rec.Break(0.1, 0.1, breaktime, time);
+		//printf("2\n");
+		flag2 = 1;
+		glass2.Break(0.1, 0.1, breaktime, time);
+		//time = time + 0.01;
+	}
+	glPopMatrix();
+
+	glPushMatrix();
+	if (!(ball.Get_Center(0) >= -25.20&&ball.Get_Center(0) <= -25.10) && flag3 == 0)
+		glass3.Draw(color, 200, 200);
+	else {
+		flag3 = 1;
+		glass3.Break(0.1, 0.1, breaktime, time);
 		//time = time + 0.01;
 	}
 	glPopMatrix();

@@ -1,8 +1,9 @@
 ﻿  main.cpp
-c:\users\zihao wang\desktop\cg_project_mine\cg_project_mine\objmodel.h(11): warning C4305: “初始化”: 从“double”到“float”截断
-c:\users\zihao wang\desktop\cg_project_mine\cg_project_mine\main.cpp(43): warning C4305: “初始化”: 从“double”到“GLfloat”截断
-c:\users\zihao wang\desktop\cg_project_mine\cg_project_mine\main.cpp(44): warning C4305: “初始化”: 从“double”到“GLfloat”截断
-c:\users\zihao wang\desktop\cg_project_mine\cg_project_mine\main.cpp(53): warning C4305: “初始化”: 从“double”到“GLfloat”截断
-c:\users\zihao wang\desktop\cg_project_mine\cg_project_mine\main.cpp(151): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\zihao wang\desktop\cg_project_mine\cg_project_mine\main.cpp(395): warning C4305: “参数”: 从“double”到“GLfloat”截断
-  CG_Project_mine.vcxproj -> C:\Users\Zihao Wang\Desktop\CG_Project_mine\Debug\CG_Project_mine.exe
+c:\users\zihao wang\desktop\tietu\cg_project_mine\cg_project_mine\cg_project_mine\objmodel.h(11): warning C4305: “初始化”: 从“double”到“float”截断
+c:\users\zihao wang\desktop\tietu\cg_project_mine\cg_project_mine\cg_project_mine\main.cpp(43): warning C4305: “初始化”: 从“double”到“GLfloat”截断
+c:\users\zihao wang\desktop\tietu\cg_project_mine\cg_project_mine\cg_project_mine\main.cpp(44): warning C4305: “初始化”: 从“double”到“GLfloat”截断
+c:\users\zihao wang\desktop\tietu\cg_project_mine\cg_project_mine\cg_project_mine\main.cpp(55): warning C4305: “初始化”: 从“double”到“GLfloat”截断
+c:\users\zihao wang\desktop\tietu\cg_project_mine\cg_project_mine\cg_project_mine\main.cpp(156): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\zihao wang\desktop\tietu\cg_project_mine\cg_project_mine\cg_project_mine\main.cpp(413): warning C4305: “参数”: 从“double”到“GLfloat”截断
+c:\users\zihao wang\desktop\tietu\cg_project_mine\cg_project_mine\cg_project_mine\main.cpp(423): warning C4305: “参数”: 从“double”到“GLfloat”截断
+  CG_Project_mine.vcxproj -> C:\Users\Zihao Wang\Desktop\tietu\CG_Project_mine\CG_Project_mine\Debug\CG_Project_mine.exe
