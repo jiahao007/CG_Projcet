@@ -175,7 +175,7 @@ void Ball::mul()
 	forward_Vector[1] = -rotate_Vector[0];
 	forward_Vector[2] = 0;*/
 	rotate_Vector[0] = -forward_Vector[1];
-	rotate_Vector[1] = -forward_Vector[0];
+	rotate_Vector[1] = forward_Vector[0];
 }
 
 void Ball::Left()
