@@ -17,6 +17,7 @@ private:
 	GLfloat center[3];
 	GLfloat rotate_Vector[3];
 	GLfloat forward_Vector[3];
+	GLint   deadTime;
 	Material material;
 
 	//GLfloat rectangle_x[10][4];
