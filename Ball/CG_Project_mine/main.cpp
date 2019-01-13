@@ -8,10 +8,50 @@
 #include "objModel.h"
 #include "Obj.h"
 #include"glassRectangle.h"
+#include <Windows.h>
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
 // This assignment may cost you some efferts, so I give you some important HINTS, hope that may help you.
 // Enjoy the coding and thinking, do pay more attention to the library functions used in OPENGL, such as how they are used? what are the parameters used? and why?
 
-
+static char head[54] = {
+	0x42, //0
+	0x4d, //1
+	0x66, //2
+	0x75, //3
+	0x00, //4
+	0x00, //5
+	0x00, //6
+	0x00, //7
+	0x00, //8
+	0x00, //9
+	0x36, //a
+	0x00, //b
+	0x00, //c
+	0x00, //d
+	0x28, //e
+	0x00,//f
+	0x00, //0
+	0x00, //1
+	0x64, //2
+	0x00, //3
+	0x00, //4
+	0x00, //5
+	0x64, //6
+	0x00, //7
+	0x00, //8
+	0x00, //9
+	0x01, //a
+	0x00, //b
+	0x18, //c
+	0x00, //d
+	0x00, //e
+	0x00,//f
+	0x00, //0
+	0x00, //1
+	0x30, //2
+	0x75//3
+};
 float fTranslate;
 float fRotate;
 float fScale = 1.0f;    // set inital scale value to 1.0f
@@ -36,8 +76,8 @@ float G_fAngle_vertical = 0.0f;
 //设定读入的模型以及显示的方式
 bool redraw = true;
 ObjModel *obj1 = new ObjModel();
-Obj *o = new Obj("../obj/cgv5.obj");
-string path = "/obj/rubby.obj";
+Obj *o = new Obj("obj/cgv5.obj");
+string path = "obj/rubby.obj";
 //light0参数
 GLfloat Vp0[] = { 0.0,0.0,0.0,1.0 };	 //光源环境光位置
 GLfloat Va0[] = { 0.8,0.8,0.8,1 };       //光源环境光强度数组  
@@ -53,8 +93,9 @@ glassRectangle glass1(-6.66, -0.02, -5.6, 3, 0.1, 3, 0, 0);
 glassRectangle glass2(-12.66, -0.06, -5.6, 3, 0.1, 3, 0, 0);
 glassRectangle glass3(-25.16, -0.46, -5.6, 3, 0.1, 3, 0, 0);
 GLfloat color[4] = { 0.0,1.0,1.0,0.3 };
-GLfloat time = 0;
 GLfloat breaktime;
+
+GLfloat time = 0;
 
 int flag1 = 0;
 int flag2 = 0;
@@ -68,16 +109,16 @@ void processSpecialKeys(int key, int x, int y);
 //void processNormalKeys(unsigned char key, int x, int y);
 unsigned char *LoadBitmapFile(const char *filename, BITMAPINFOHEADER *bitmapInfoHeader);
 void texload(int i, const char *filename);
-
+void grab(GLint width, GLint height);
 void myinit(void)
 {
 	glGenTextures(6, texture); // 第一参数是需要生成标示符的个数, 第二参数是返回标示符的数组
-	texload(0, "../Textures/back.bmp");
-	texload(1, "../Textures/front.bmp");
-	texload(2, "../Textures/right.bmp");
-	texload(3, "../Textures/left.bmp");
-	texload(4, "../Textures/top.bmp");
-	texload(5, "../Textures/bottom.bmp");
+	texload(0, "Textures/back.bmp");
+	texload(1, "Textures/front.bmp");
+	texload(2, "Textures/right.bmp");
+	texload(3, "Textures/left.bmp");
+	texload(4, "Textures/top.bmp");
+	texload(5, "Textures/bottom.bmp");
 	//your initialization code
 	glEnable(GL_DEPTH_TEST);
 
@@ -341,7 +382,9 @@ void key(unsigned char key, int x, int y)
 	case '4':
 		path = "C:/Users/Zihao Wang/Desktop/CG_Project_mine/obj/wan.obj";
 		redraw = true; obj1->~ObjModel(); obj1 = new ObjModel(); break;
-	
+	case 'q':
+		grab(480, 480);
+		cout << "save " << endl;
 
 	default:
 		break;
@@ -350,6 +393,8 @@ void key(unsigned char key, int x, int y)
 
 void redraw_fun()
 {
+	time = time + 0.01;
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode(GL_PROJECTION);
@@ -389,39 +434,35 @@ void redraw_fun()
 
 
 	o->Draw(0.01);
-
-
 	ball.Roll();
 
-	//glPushMatrix();
-	//if (!(ball.Get_Center(0)>=-6.66&&ball.Get_Center(0)<=-6.64)&&flag1==0)
-	//	glass1.Draw(color, 200, 200);
-	//else {
-	//	printf("%d\n",flag1);
-	//	flag1 = 1;
-	//	glass1.Break(0.1, 0.1, breaktime, time);
-	//	//time = time + 0.01;
-	//}
-	//glPopMatrix();
-
 	glPushMatrix();
-	if (!(ball.Get_Center(0) >= -12.66&&ball.Get_Center(0) <= -12.64) && flag2 == 0)
-		glass2.Draw(color, 200, 200);
-	else {
-		//printf("2\n");
+	if ((ball.Get_Center(0) >= -12.70 && ball.Get_Center(0) <= -12.40) && flag2 == 0) {
+		breaktime = time;
+		PlaySound("glass.wav", NULL, SND_ASYNC);
 		flag2 = 1;
+	}
+	if (!flag2) {
+		glass2.Draw(color, 200, 200);
+	}
+	else
+	{
 		glass2.Break(0.1, 0.1, breaktime, time);
-		//time = time + 0.01;
 	}
 	glPopMatrix();
 
 	glPushMatrix();
-	if (!(ball.Get_Center(0) >= -25.20&&ball.Get_Center(0) <= -25.10) && flag3 == 0)
-		glass3.Draw(color, 200, 200);
-	else {
+	if ((ball.Get_Center(0) >= -25.20&&ball.Get_Center(0) <= -25.10) && flag3 == 0) {
+		breaktime = time;
 		flag3 = 1;
+		PlaySound("glass.wav", NULL, SND_ASYNC);
+	}
+	if (!flag3) {
+		glass3.Draw(color, 200, 200);
+	}
+	else
+	{
 		glass3.Break(0.1, 0.1, breaktime, time);
-		//time = time + 0.01;
 	}
 	glPopMatrix();
 
@@ -455,7 +496,8 @@ int main(int argc, char *argv[])
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(480, 480);
 	int windowHandle = glutCreateWindow("Simple GLUT App");
-	
+
+	Init();
 	myinit();
 
 	glutDisplayFunc(redraw_fun);
@@ -463,11 +505,44 @@ int main(int argc, char *argv[])
 	//glutSpecialFunc(processSpecialKeys);
 	glutKeyboardFunc(key);
 	glutIdleFunc(idle);
-	Init();
+
 
 
 	glutMainLoop();
 	return 0;
 }
 
+void grab(GLint width, GLint height)
+{
+	GLint pixelLength;
+	GLubyte * pixelDate;
+	FILE * wfile;
+	//打开文件
+	wfile = fopen("grab2.bmp", "wb");
+	fwrite(head, 54, 1, wfile);
+	//更改grab.bmp的头文件中的高度和宽度
+	fseek(wfile, 0x0012, SEEK_SET);
+	fwrite(&width, sizeof(width), 1, wfile);
+	fwrite(&height, sizeof(height), 1, wfile);
+	//为像素分配内存
+	pixelLength = width * 3;
+	if (pixelLength % 4 != 0)
+	{
+		pixelLength += 4 - pixelLength % 4;
+	}
+	pixelLength *= height;
+	pixelDate = (GLubyte *)malloc(pixelLength);
+	if (pixelDate == 0)
+	{
+		printf("/a/n分配内存失败!");
+	}
+	//读取窗口像素并存储
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+	glReadPixels(0, 0, width, height, GL_BGR_EXT, GL_UNSIGNED_BYTE, pixelDate);
+	//写入像素数据
+	fseek(wfile, 0, SEEK_END);
+	fwrite(pixelDate, pixelLength, 1, wfile);
+	fclose(wfile);
+	free(pixelDate);
+}
 

@@ -175,9 +175,9 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 
 	//左上角quad
 	glPushMatrix();
-	glTranslatef(-0.5*time, -2.6*time, -G*time*time);
-	//glRotatef(time, a / 2, b / 6, c / 2);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glTranslatef(-0.5*time, -2.6*time, -2 * G*time*time);
+	glRotatef(400 * time, a / 2, b / 6, c / 2);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_QUADS);
 	glVertex3f(b / 2, -a / 2, c / 6);
 	glVertex3f(b / 2, -a / 2, c / 2);
@@ -189,8 +189,8 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 	//正上方triangle
 	glPushMatrix();
 	glTranslatef(-0.8*time, -0.1*time*time, -G*time*time);
-	//glRotatef(2*time, -a / 2, b / 6/, c / 2);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glRotatef(400 * time, -a / 2, b / 6  , c / 2);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_TRIANGLES);
 	glVertex3f(b / 2, -a / 6, c / 2);
 	glVertex3f(b / 2, a / 6, c / 2);
@@ -200,9 +200,9 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 	
 	//右上方quad
 	glPushMatrix();
-	glTranslatef(-0.5*time, 1.6*time, -G*time*time);
-	//glRotatef(time, a / 2, b / 6, c / 2);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glTranslatef(-0.5*time, 1.6*time, -2 * G*time*time);
+	glRotatef(400 * time, b / 2, a / 6, c / 2);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_QUADS);
 	glVertex3f(b / 2, a / 6, c / 2);
 	glVertex3f(b / 2, a / 2, c / 2);
@@ -214,8 +214,8 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 	//右tri
 	glPushMatrix();
 	glTranslatef(-0.5*time, 3.1*time, -G*time*time);
-	glRotatef(2 * time, a / 2, -b / 6, 0);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glRotatef(400  * time, a / 2, -b / 6, 0);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_TRIANGLES);
 	glVertex3f(b / 2, a / 2, c / 6);
 	glVertex3f(b / 2, a / 2, -c / 6);
@@ -226,8 +226,8 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 	//右下方quad
 	glPushMatrix();
 	glTranslatef(-0.5*time, 3.6*time, -G*time*(time+0.5));
-	//glRotatef(time, a / 2, b / 6, c / 2);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glRotatef(400 * time, a / 2, b / 6, c / 2);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_QUADS);
 	glVertex3f(b / 2, a / 2, -c / 6);
 	glVertex3f(b / 2, a / 2, -c / 2);
@@ -239,8 +239,8 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 	//下方tri
 	glPushMatrix();
 	glTranslatef(-0.5*time, 0.1*time*time, -G*time*(time+0.6));
-	//glRotatef(2*time, -a / 2, b / 6, c / 2);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glRotatef(400 * time, -a / 2, b / 6, c / 2);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_TRIANGLES);
 	glVertex3f(b / 2, -a / 6, -c / 2);
 	glVertex3f(b / 2, a / 6, -c / 2);
@@ -251,8 +251,8 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 	//左下方quad
 	glPushMatrix();
 	glTranslatef(-0.5*time, -3.6*time, -G*time*(time + 0.5));
-	//glRotatef(time, a / 2, b / 6, c / 2);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glRotatef(400 * time, a / 2, b / 6, c / 2);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_QUADS);
 	glVertex3f(b / 2, -a / 6, -c / 2);
 	glVertex3f(b / 2, -a / 2, -c / 2);
@@ -264,8 +264,8 @@ void glassRectangle::Break(GLfloat HitPointX, GLfloat HitPointY, float t0, float
 	//左边tri
 	glPushMatrix();
 	glTranslatef(-0.5*time, -3.6*time, -G*time*(time + 0.3));
-	//glRotatef(2*time, -a / 2, b / 6, c / 2);
-	glScalef(t0 / t, t0 / t, t0 / t);
+	glRotatef(400 * time, -a / 2, b / 6, c / 2);
+	glScalef(t0 / (t + time), t0 / (t + time), t0 / (t + time));
 	glBegin(GL_TRIANGLES);
 	glVertex3f(b / 2, -a / 2, -c / 6);
 	glVertex3f(b / 2, -a / 2, c / 6);

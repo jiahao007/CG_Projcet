@@ -1,0 +1,9 @@
+﻿  Obj.cpp
+c:\users\hp\desktop\lastest\ball\cg_project_mine\obj.cpp(53): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+c:\users\hp\desktop\lastest\ball\cg_project_mine\obj.cpp(63): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+c:\users\hp\desktop\lastest\ball\cg_project_mine\obj.cpp(73): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+c:\users\hp\desktop\lastest\ball\cg_project_mine\obj.cpp(160): warning C4305: “参数”: 从“double”到“GLfloat”截断
+c:\users\hp\desktop\lastest\ball\cg_project_mine\obj.cpp(205): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+c:\users\hp\desktop\lastest\ball\cg_project_mine\obj.cpp(206): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+c:\users\hp\desktop\lastest\ball\cg_project_mine\obj.cpp(207): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+  CG_Project_mine.vcxproj -> C:\Users\HP\Desktop\lastest\Ball\x64\Debug\CG_Project_mine.exe

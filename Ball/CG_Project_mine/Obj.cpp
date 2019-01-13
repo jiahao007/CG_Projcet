@@ -6,7 +6,7 @@
 #include <math.h>
 #include "Obj.h"
 
-extern GLuint textures[3];;
+extern GLuint textures[56];;
 
 using namespace std;
 
@@ -163,9 +163,23 @@ void Obj::Draw(double size)
 	for (int num = 0; num <= obj_num; num++) {
 		for (int i = 0; i < model[num].fSets.size(); i++)  //for every face needed to be drawed
 		{
-			if(num == 21) glBindTexture(GL_TEXTURE_2D, textures[2]);
-			else if (num <= 55 && num >= 48) glBindTexture(GL_TEXTURE_2D, textures[1]);
+			if (num <= 4)glBindTexture(GL_TEXTURE_2D, textures[6]);
+			else if (num == 5)glBindTexture(GL_TEXTURE_2D, textures[0]);
+			else if (num >= 6 && num <= 11)glBindTexture(GL_TEXTURE_2D, textures[6]);
+			else if (num >= 12 && num <= 20 && num != 16 && num != 17)glBindTexture(GL_TEXTURE_2D, textures[12]);
+			else if (num == 16 || num == 17)glBindTexture(GL_TEXTURE_2D, textures[10]);
+			else if (num == 21)glBindTexture(GL_TEXTURE_2D, textures[8]);
+			else if (num >= 22 && num <= 31 || num >= 38 && num <= 47)glBindTexture(GL_TEXTURE_2D, textures[12]);
+			else if (num >= 32 && num <= 37)glBindTexture(GL_TEXTURE_2D, textures[6]);
+			//else if (num >= 6 && num <= 11)glBindTexture(GL_TEXTURE_2D, textures[6]);
+			/*else if(num == 21) glBindTexture(GL_TEXTURE_2D, textures[2]);
+			else if (num <= 55 && num >= 48) glBindTexture(GL_TEXTURE_2D, textures[2]);
+			else if(num <= 15 && num >= 12) glBindTexture(GL_TEXTURE_2D, textures[4]);
+			else if (num == 5) glBindTexture(GL_TEXTURE_2D, textures[5]);*/
 			else glBindTexture(GL_TEXTURE_2D, textures[0]);
+			/*if(num == 21) glBindTexture(GL_TEXTURE_2D, textures[2]);
+			else if (num <= 55 && num >= 48) glBindTexture(GL_TEXTURE_2D, textures[1]);
+			else glBindTexture(GL_TEXTURE_2D, textures[0]);*/
 			glBegin(GL_POLYGON);
 			for (int j = 0; j < model[num].fSets[i].size(); j++)  //for every vertex related with this face
 			{

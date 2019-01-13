@@ -1,6 +1,6 @@
 #include "function.h"
 
-GLuint textures[3];
+GLuint textures[56];
 
 void _loadBitmap(string picture, int material)
 {
@@ -55,8 +55,19 @@ void _loadBitmap(string picture, int material)
 
 void Init()
 {
-	glGenTextures(3, textures);
-	_loadBitmap("../Pictures/0.bmp", textures[0]);//wood
-	_loadBitmap("../Pictures/1.bmp", textures[1]);//paper
-	_loadBitmap("../Pictures/2.bmp", textures[2]);
+	glGenTextures(56, textures);
+	_loadBitmap("Pictures/0.bmp", textures[0]);//wood
+	_loadBitmap("Pictures/1.bmp", textures[1]);//paper
+	_loadBitmap("Pictures/2.bmp", textures[2]);
+	_loadBitmap("Pictures/track.bmp", textures[3]);
+	_loadBitmap("Pictures/wall.bmp", textures[4]);
+	_loadBitmap("Pictures/3.bmp", textures[5]);
+	_loadBitmap("Pictures/4.bmp", textures[6]);
+	_loadBitmap("Pictures/5.bmp", textures[7]);
+	_loadBitmap("Pictures/6.bmp", textures[8]);
+	_loadBitmap("Pictures/7.bmp", textures[9]);
+	_loadBitmap("Pictures/8.bmp", textures[10]);
+	_loadBitmap("Pictures/9.bmp", textures[11]);
+	_loadBitmap("Pictures/10.bmp", textures[12]);
+	_loadBitmap("Pictures/11.bmp", textures[13]);
 }

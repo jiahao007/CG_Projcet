@@ -4,7 +4,7 @@
 #include<gl/glut.h>
 
 enum Material{WOOD,PAPER,STONE};
-extern GLuint textures[3];
+extern GLuint textures[56];
 class Ball
 {
 private:
@@ -17,6 +17,8 @@ private:
 	GLfloat center[3];
 	GLfloat rotate_Vector[3];
 	GLfloat forward_Vector[3];
+	GLint   deadTime;
+	
 	Material material;
 
 	//GLfloat rectangle_x[10][4];
